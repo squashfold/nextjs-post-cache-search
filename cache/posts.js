@@ -20,9 +20,9 @@ function getPostData() {
     }
   })
 
-  const postsString = JSON.stringify(posts)
+  const postsData = `export const posts = ${JSON.stringify(posts)}`
 
-  return postsString
+  return postsData
 }
 
 try {
