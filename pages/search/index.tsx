@@ -1,11 +1,6 @@
-
-// import Search from '../../components/Search'
-// import SectionHeading from '../../components/SectionHeading';
-
 import Head from 'next/head';
 import { useCallback, useRef, useState, useEffect } from 'react'
 import type Post from '../../interfaces/post'
-// import Config from "../../app.config"
 import PostPreview from '../../components/post-preview'
 
 export default function Home() {
@@ -15,7 +10,6 @@ const searchRef = useRef<HTMLInputElement>(null)
 const defaultPosts = require('../../cache/data/posts').data;
 
 const [query, setQuery] = useState('')
-// const [loaded, setLoaded] = useState<boolean>(true)
 const [results, setResults] = useState<any[]>(defaultPosts)
 
 const searchEndpoint = (query: string) => `/api/search?query=${query}`
@@ -30,9 +24,6 @@ const getResults = (query: string) => {
         .catch(error => {
           console.error('Error fetching search results:', error)
           setResults([])
-        })
-        .finally(() => {
-        //   setLoaded(true)
         })
     } else {
       setResults(defaultPosts)
