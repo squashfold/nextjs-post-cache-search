@@ -14,13 +14,14 @@ function getPostData() {
       postId,
       slug: postId,
       title: result.data.title,
-      thumbnail: result.data.coverImage,
+      coverImage: result.data.coverImage,
       excerpt: result.data.excerpt,
-      date: result.data.date
+      date: result.data.date,
+      author: result.data.author
     }
   })
 
-  const postsData = `export const posts = ${JSON.stringify(posts)}`
+  const postsData = `export const data = ${JSON.stringify(posts)}`
 
   return postsData
 }
