@@ -7,7 +7,7 @@ export default function Home() {
 
 const searchRef = useRef<HTMLInputElement>(null)
 
-const defaultPosts = require('../../cache/data/posts').data;
+const defaultPosts = require('../../cache/data/posts').data; // We want to show all posts by default
 
 const [query, setQuery] = useState('')
 const [results, setResults] = useState<any[]>(defaultPosts)
@@ -60,17 +60,25 @@ useEffect(() => {
             </div>
         </div>
         <div className={`grid grid-cols-3 gap-4`}>
-            {results.map((post: Post, index) => (
-                <PostPreview
-                key={post.slug}
-                title={post.title}
-                coverImage={post.coverImage}
-                date={post.date}
-                author={post.author}
-                slug={post.slug}
-                excerpt={post.excerpt}
-            />
-            ))}
+            {results.length ?
+                <>
+                    {results.map((post: Post, index) => (
+                        <PostPreview
+                            key={post.slug}
+                            title={post.title}
+                            coverImage={post.coverImage}
+                            date={post.date}
+                            author={post.author}
+                            slug={post.slug}
+                            excerpt={post.excerpt}
+                        />
+                    ))}
+                </>
+            : 
+                <>
+                    <p>No results found...</p>
+                </>
+            }
         </div>
     </div>
     </>
